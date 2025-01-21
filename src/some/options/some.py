@@ -2,7 +2,7 @@ from __future__ import annotations
 
 from typing import Optional, Callable
 
-from some.types import UnwrapOr, T, Status, FnType
+from some.types import UnwrapOr, T, Status
 
 
 class Some(UnwrapOr[T]):
