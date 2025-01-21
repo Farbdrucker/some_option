@@ -4,7 +4,7 @@ import uuid
 from dataclasses import dataclass, field
 from typing import Callable, Set, Any, Optional, Dict
 
-from some.types import T, Status, Error, UnwrapOr, FnType
+from some.types import T, Status, Error, UnwrapOr
 
 
 @dataclass
@@ -124,7 +124,7 @@ class LazyDAGSome(UnwrapOr[T]):
         if node.state == Status.PENDING:
             try:
                 _global_dag.execute()
-            except Exception as e:
+            except Exception:
                 raise default
 
         if node.state == Status.OK:

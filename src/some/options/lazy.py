@@ -51,7 +51,7 @@ class LazySome(UnwrapOr[T]):
         elif self._status == Status.ERROR:
             value_str = f"{self._error}"
         elif self._status == Status.PENDING:
-            value_str = f"<pending>"
+            value_str = "<pending>"
         else:
             raise ValueError(f"Unknown status: {self._status}")
         return f"Some{state_str}({value_str})"
