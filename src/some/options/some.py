@@ -6,10 +6,10 @@ from some.types import UnwrapOr, T, Status
 
 
 class Some(UnwrapOr[T]):
-    def __init__(self, value: T, state: Status, _error: Optional[Exception] = None):
+    def __init__(self, value: T, state: Status, *, error: Optional[Exception] = None):
         self._value = value
         self._status = state
-        self._error = _error
+        self._error = error
 
     def unwrap(self) -> T:
         if self._status == Status.OK:
@@ -25,7 +25,7 @@ class Some(UnwrapOr[T]):
 
     @classmethod
     def error(cls, error: Exception) -> Some[T]:
-        return Some(None, Status.ERROR, error)
+        return Some(None, Status.ERROR, error=error)
 
     @classmethod
     def ok(cls, value: T) -> Some[T]:
